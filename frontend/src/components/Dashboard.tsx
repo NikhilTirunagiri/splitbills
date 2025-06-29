@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DataModal } from "@/components/ui/data-modal";
+import Profile from "@/components/Profile";
 import { Plus, Users, User, Activity, DollarSign, Bell } from "lucide-react";
 import { Header } from "@/components/Header";
 import { useAuth } from "@/contexts/AuthContext";
@@ -15,6 +16,7 @@ const Dashboard = () => {
   const [friendsModalOpen, setFriendsModalOpen] = useState(false);
   const [groupsModalOpen, setGroupsModalOpen] = useState(false);
   const [activityModalOpen, setActivityModalOpen] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [totalBalance] = useState(-100); // Will be calculated from real data
   const [yourGroups] = useState([
     {
@@ -154,6 +156,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      setShowProfile(false);
       toast({
         title: "Logged out",
         description: "See you soon!",
@@ -165,6 +168,14 @@ const Dashboard = () => {
         variant: "destructive",
       });
     }
+  };
+
+  const handleProfileClick = () => {
+    setShowProfile(true);
+  };
+
+  const handleBackToDashboard = () => {
+    setShowProfile(false);
   };
 
   const handleCreateGroup = () => {
@@ -201,6 +212,10 @@ const Dashboard = () => {
     });
   };
 
+  if (showProfile) {
+    return <Profile onBack={handleBackToDashboard} />;
+  }
+
   return (
     <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style={{fontFamily: 'Manrope, "Noto Sans", sans-serif'}}>
       <div className="layout-container flex h-full grow flex-col">
@@ -228,7 +243,7 @@ const Dashboard = () => {
                   ? `url("${user.photoURL}")` 
                   : 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuChzX9zz_-I7BeUnZmlWtawuWJsVkh6_Pbi5SP2poyxpiMV6u8-Rzvr-uxTEjAHiD0TGvQI1FNpS-T_7lg624pCeoFyBEkpUQyPk2cuTsKBxnGk6AAMakDjTb_ljyd2s18hH3qUb6gbod35H4zEb2ywee_Djnr68RHs1Rn0fm_Sq0GLymQ8U4jZAGqu_eFCGJFxSOd6miMUOWmh0RjvjVYFNsCK_SczpKJB48GZQsNNXgDjO0Tf6NEcDlH4JhW_RgV-3GoYFoCG0A")'
               }}
-              onClick={handleLogout}
+              onClick={handleProfileClick}
             />
           </div>
         </header>
