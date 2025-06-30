@@ -38,7 +38,7 @@ const Profile = ({ onBack }: ProfileProps) => {
   return (
     <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style={{fontFamily: 'Manrope, "Noto Sans", sans-serif'}}>
       <div className="layout-container flex h-full grow flex-col">
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-10 py-3">
+        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-4 sm:px-10 py-3">
           <div className="flex items-center gap-4 text-[#111418]">
             <div className="size-4">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,9 +50,9 @@ const Profile = ({ onBack }: ProfileProps) => {
                 />
               </svg>
             </div>
-            <h2 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">SplitBills</h2>
+            <h2 className="text-[#111418] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]">SplitBills</h2>
           </div>
-          <div className="flex flex-1 justify-end gap-8">
+          <div className="flex flex-1 justify-end gap-4 sm:gap-8">
             <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#f0f2f4] text-[#111418] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
               <Bell size={20} />
             </button>
@@ -67,13 +67,13 @@ const Profile = ({ onBack }: ProfileProps) => {
           </div>
         </header>
         
-        <div className="px-40 flex flex-1 justify-center py-5">
+        <div className="px-4 sm:px-8 md:px-16 lg:px-40 flex flex-1 justify-center py-5">
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div className="flex p-4">
               <div className="flex w-full flex-col gap-4 items-center">
                 <div className="flex gap-4 flex-col items-center">
                   <div
-                    className="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                    className="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32"
                     style={{
                       backgroundImage: user?.photoURL 
                         ? `url("${user.photoURL}")` 
@@ -81,10 +81,10 @@ const Profile = ({ onBack }: ProfileProps) => {
                     }}
                   />
                   <div className="flex flex-col items-center justify-center">
-                    <p className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">
+                    <p className="text-[#111418] text-lg sm:text-xl md:text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">
                       {user?.displayName || "User Name"}
                     </p>
-                    <p className="text-[#637488] text-base font-normal leading-normal text-center">
+                    <p className="text-[#637488] text-sm sm:text-base font-normal leading-normal text-center">
                       {user?.email || "user@email.com"}
                     </p>
                   </div>
@@ -92,18 +92,18 @@ const Profile = ({ onBack }: ProfileProps) => {
               </div>
             </div>
 
-            <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Your balance</h2>
+            <h2 className="text-[#111418] text-lg sm:text-xl md:text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Your balance</h2>
             <div className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12">
                 <DollarSign size={24} />
               </div>
               <div className="flex flex-col justify-center">
-                <p className="text-[#111418] text-base font-medium leading-normal line-clamp-1">Total balance</p>
-                <p className="text-[#637488] text-sm font-normal leading-normal line-clamp-2">You owe $100</p>
+                <p className="text-[#111418] text-sm sm:text-base font-medium leading-normal line-clamp-1">Total balance</p>
+                <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal line-clamp-2">You owe $100</p>
               </div>
             </div>
 
-            <h2 className="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Settings</h2>
+            <h2 className="text-[#111418] text-lg sm:text-xl md:text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Settings</h2>
             
             <button 
               className="flex items-center gap-4 bg-white px-4 min-h-14 hover:bg-[#f8f9fa] transition-colors cursor-pointer"
@@ -112,7 +112,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-10">
                 <Bell size={24} />
               </div>
-              <p className="text-[#111418] text-base font-normal leading-normal truncate ">Notifications</p>
+              <p className="text-[#111418] text-sm sm:text-base font-normal leading-normal truncate">Notifications</p>
             </button>
 
             <button 
@@ -122,7 +122,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-10">
                 <DollarSign size={24} />
               </div>
-              <p className="text-[#111418] text-base font-normal leading-normal truncate">Currency</p>
+              <p className="text-[#111418] text-sm sm:text-base font-normal leading-normal truncate">Currency</p>
             </button>
 
             <button 
@@ -132,7 +132,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-10">
                 <Globe size={24} />
               </div>
-              <p className="text-[#111418] text-base font-normal leading-normal truncate">Language</p>
+              <p className="text-[#111418] text-sm sm:text-base font-normal leading-normal truncate">Language</p>
             </button>
 
             <button 
@@ -142,7 +142,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-10">
                 <UserPlus size={24} />
               </div>
-              <p className="text-[#111418] text-base font-normal leading-normal truncate">Invite friends</p>
+              <p className="text-[#111418] text-sm sm:text-base font-normal leading-normal truncate">Invite friends</p>
             </button>
 
             <button 
@@ -152,7 +152,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-10">
                 <HelpCircle size={24} />
               </div>
-              <p className="text-[#111418] text-base font-normal leading-normal truncate">Help</p>
+              <p className="text-[#111418] text-sm sm:text-base font-normal leading-normal truncate">Help</p>
             </button>
 
             <button 
@@ -162,7 +162,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-10">
                 <ArrowLeft size={24} />
               </div>
-              <p className="text-[#111418] text-base font-normal leading-normal truncate">Back to Dashboard</p>
+              <p className="text-[#111418] text-sm sm:text-base font-normal leading-normal truncate">Back to Dashboard</p>
             </button>
 
             <button 
@@ -172,7 +172,7 @@ const Profile = ({ onBack }: ProfileProps) => {
               <div className="text-red-600 flex items-center justify-center rounded-lg bg-red-100 shrink-0 size-10">
                 <ArrowLeft size={24} />
               </div>
-              <p className="text-red-600 text-base font-normal leading-normal truncate">Log out</p>
+              <p className="text-red-600 text-sm sm:text-base font-normal leading-normal truncate">Log out</p>
             </button>
           </div>
         </div>

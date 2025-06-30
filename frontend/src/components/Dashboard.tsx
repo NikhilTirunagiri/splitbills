@@ -220,7 +220,7 @@ const Dashboard = () => {
     <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style={{fontFamily: 'Manrope, "Noto Sans", sans-serif'}}>
       <div className="layout-container flex h-full grow flex-col">
         {/* Header */}
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-10 py-3">
+        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-4 sm:px-10 py-3">
           <div className="flex items-center gap-4 text-[#111418]">
             <div className="size-4">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,9 +230,9 @@ const Dashboard = () => {
                 />
               </svg>
             </div>
-            <h2 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">SplitBills</h2>
+            <h2 className="text-[#111418] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]">SplitBills</h2>
           </div>
-          <div className="flex flex-1 justify-end gap-8">
+          <div className="flex flex-1 justify-end gap-4 sm:gap-8">
             <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#f0f2f4] text-[#111418] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
               <Bell size={20} />
             </button>
@@ -249,14 +249,14 @@ const Dashboard = () => {
         </header>
         
         {/* Main Content */}
-      <div className="flex flex-row justify-center mt-15">
+      <div className="flex flex-col lg:flex-row justify-center mt-4 lg:mt-15">
         <div className="flex flex-1">
-          <div className="layout-content-container flex flex-col max-w-[960px] flex-1 px-40 h-[calc(100vh-120px)]">
+          <div className="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 sm:px-8 md:px-16 lg:px-40 h-auto lg:h-[calc(100vh-120px)]">
             {/* Dashboard Header - Fixed */}
             <div className="flex flex-wrap justify-between gap-3 p-4 flex-shrink-0">
-              <p className="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72">Dashboard</p>
+              <p className="text-[#111418] tracking-light text-xl sm:text-2xl lg:text-[32px] font-bold leading-tight">Dashboard</p>
               <button
-                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal"
+                className="flex min-w-[60px] sm:min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-3 sm:px-4 bg-[#f0f2f4] text-[#111418] text-xs sm:text-sm font-medium leading-normal"
                 onClick={handleCreateGroup}
               >
                 <span className="truncate">Add</span>
@@ -265,7 +265,7 @@ const Dashboard = () => {
             
             {/* Total Balance - Fixed */}
             <div className="flex-shrink-0">
-              <h3 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Total balance</h3>
+              <h3 className="text-[#111418] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Total balance</h3>
               <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <p className="text-[#111418] text-base font-normal leading-normal flex-1 truncate">
                   {totalBalance >= 0 ? `You are owed $${Math.abs(totalBalance)}` : `You owe $${Math.abs(totalBalance)}`}
@@ -275,34 +275,34 @@ const Dashboard = () => {
             
             {/* Your Friends Section - Fixed Header */}
             <div className="flex flex-wrap justify-between gap-3 p-4 flex-shrink-0">
-              <h3 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">Your Friends</h3>
+              <h3 className="text-[#111418] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]">Your Friends</h3>
               <button
-                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal"
+                className="flex min-w-[70px] sm:min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-3 sm:px-4 bg-[#f0f2f4] text-[#111418] text-xs sm:text-sm font-medium leading-normal"
                 onClick={handleSeeAllFriends}
               >
                 <span className="truncate">See All</span>
               </button>
             </div>
             
-            {/* Scrollable Groups Content Area */}
-            <div className="flex-1 overflow-y-auto px-4">
+            {/* Scrollable Friends Content Area */}
+            <div className="flex-1 lg:overflow-y-auto px-4 max-h-64 lg:max-h-none">
               {recentActivity.length === 0 ? (
-                <div className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+                <div className="flex items-center gap-3 sm:gap-4 bg-white px-3 sm:px-4 min-h-[60px] sm:min-h-[72px] py-2">
                   <div className="flex flex-col justify-center flex-1">
-                    <p className="text-[#637488] text-base font-normal leading-normal">No friends yet</p>
-                    <p className="text-[#637488] text-sm font-normal leading-normal">Add friends to start splitting expenses</p>
+                    <p className="text-[#637488] text-sm sm:text-base font-normal leading-normal">No friends yet</p>
+                    <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal">Add friends to start splitting expenses</p>
                   </div>
                 </div>
               ) : (
                 friends.map((group) => (
-                  <div key={group.id} className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 hover:bg-[#f8f9fa] cursor-pointer transition-colors border-b border-[#f0f2f4] last:border-b-0">
+                  <div key={group.id} className="flex items-center gap-3 sm:gap-4 bg-white px-3 sm:px-4 min-h-[60px] sm:min-h-[72px] py-2 hover:bg-[#f8f9fa] cursor-pointer transition-colors border-b border-[#f0f2f4] last:border-b-0">
                     <div
-                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-14 flex-shrink-0 cursor-pointer"
+                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 sm:size-14 flex-shrink-0 cursor-pointer"
                       style={{backgroundImage: `url("${group.image}")`}}
                     />
-                    <div className="flex flex-col justify-center flex-1">
-                      <p className="text-[#111418] text-base font-medium leading-normal line-clamp-1">{group.name}</p>
-                      <p className="text-[#637488] text-sm font-normal leading-normal line-clamp-2">
+                    <div className="flex flex-col justify-center flex-1 min-w-0">
+                      <p className="text-[#111418] text-sm sm:text-base font-medium leading-normal line-clamp-1">{group.name}</p>
+                      <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal line-clamp-2">
                         {group.balance >= 0 ? `You are owed $${Math.abs(group.balance)}` : `You owe $${Math.abs(group.balance)}`}
                       </p>
                     </div>
@@ -312,9 +312,9 @@ const Dashboard = () => {
             </div>
             {/* Your Groups Section - Fixed Header */}
             <div className="flex flex-wrap justify-between gap-3 p-4 flex-shrink-0">
-              <h3 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">Your groups</h3>
+              <h3 className="text-[#111418] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]">Your groups</h3>
               <button
-                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal"
+                className="flex min-w-[70px] sm:min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-3 sm:px-4 bg-[#f0f2f4] text-[#111418] text-xs sm:text-sm font-medium leading-normal"
                 onClick={handleSeeAllGroups}
               >
                 <span className="truncate">See All</span>
@@ -322,68 +322,68 @@ const Dashboard = () => {
             </div>
             
             {/* Scrollable Groups Content Area */}
-            <div className="flex-1 overflow-y-auto px-4">
+            <div className="flex-1 lg:overflow-y-auto px-4 max-h-64 lg:max-h-none">
               {recentActivity.length === 0 ? (
-                <div className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+                <div className="flex items-center gap-3 sm:gap-4 bg-white px-3 sm:px-4 min-h-[60px] sm:min-h-[72px] py-2">
                   <div className="flex flex-col justify-center flex-1">
-                    <p className="text-[#637488] text-base font-normal leading-normal">No groups yet</p>
-                    <p className="text-[#637488] text-sm font-normal leading-normal">Create your first group to start splitting expenses</p>
+                    <p className="text-[#637488] text-sm sm:text-base font-normal leading-normal">No groups yet</p>
+                    <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal">Create your first group to start splitting expenses</p>
                   </div>
                 </div>
               ) : (
                 yourGroups.map((group) => (
-                  <div key={group.id} className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 hover:bg-[#f8f9fa] cursor-pointer transition-colors border-b border-[#f0f2f4] last:border-b-0">
+                  <div key={group.id} className="flex items-center gap-3 sm:gap-4 bg-white px-3 sm:px-4 min-h-[60px] sm:min-h-[72px] py-2 hover:bg-[#f8f9fa] cursor-pointer transition-colors border-b border-[#f0f2f4] last:border-b-0">
                     <div
-                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14 flex-shrink-0"
+                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-12 sm:size-14 flex-shrink-0"
                       style={{backgroundImage: `url("${group.image}")`}}
-                    />
-                    <div className="flex flex-col justify-center flex-1">
-                      <p className="text-[#111418] text-base font-medium leading-normal line-clamp-1">{group.name}</p>
-                      <p className="text-[#637488] text-sm font-normal leading-normal line-clamp-2">
-                        {group.balance >= 0 ? `You are owed $${Math.abs(group.balance)}` : `You owe $${Math.abs(group.balance)}`}
-                      </p>
+                                          />
+                      <div className="flex flex-col justify-center flex-1 min-w-0">
+                        <p className="text-[#111418] text-sm sm:text-base font-medium leading-normal line-clamp-1">{group.name}</p>
+                        <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal line-clamp-2">
+                          {group.balance >= 0 ? `You are owed $${Math.abs(group.balance)}` : `You owe $${Math.abs(group.balance)}`}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))
-              )}
+                  ))
+                )}
+              </div>
+              
+    
+              
             </div>
-            
-  
-            
           </div>
-        </div>
         <div className="flex flex-1">
-          <div className="layout-content-container flex flex-col max-w-[960px] flex-1 px-40 h-[calc(100vh-120px)]">
-            {/* Dashboard Header - Fixed */}
+          <div className="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 sm:px-8 md:px-16 lg:px-40 h-auto lg:h-[calc(100vh-120px)]">
+            {/* Recent Activity Header - Fixed */}
             <div className="flex flex-wrap justify-between gap-3 p-4 flex-shrink-0">
-              <p className="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72">Recent Activity</p>
+              <p className="text-[#111418] tracking-light text-xl sm:text-2xl lg:text-[32px] font-bold leading-tight">Recent Activity</p>
               <button
-                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal"
+                className="flex min-w-[70px] sm:min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-3 sm:px-4 bg-[#f0f2f4] text-[#111418] text-xs sm:text-sm font-medium leading-normal"
                 onClick={handleSeeAllActivity}
               >
                 <span className="truncate">See All</span>
               </button>
             </div>
             
-            {/* Scrollable Content Area */}
-            <div className="flex-1 overflow-y-auto px-4">
+            {/* Scrollable Recent Activity Content Area */}
+            <div className="flex-1 lg:overflow-y-auto px-4 max-h-96 lg:max-h-none">
               {recentActivity.length === 0 ? (
-                <div className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+                <div className="flex items-center gap-3 sm:gap-4 bg-white px-3 sm:px-4 min-h-[60px] sm:min-h-[72px] py-2">
                   <div className="flex flex-col justify-center flex-1">
-                    <p className="text-[#637488] text-base font-normal leading-normal">No recent activity</p>
-                    <p className="text-[#637488] text-sm font-normal leading-normal">Your expense activity will appear here</p>
+                    <p className="text-[#637488] text-sm sm:text-base font-normal leading-normal">No recent activity</p>
+                    <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal">Your expense activity will appear here</p>
                   </div>
                 </div>
               ) : (
                 recentActivity.map((group) => (
-                  <div key={group.id} className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 hover:bg-[#f8f9fa] cursor-pointer transition-colors border-b border-[#f0f2f4] last:border-b-0">
+                  <div key={group.id} className="flex items-center gap-3 sm:gap-4 bg-white px-3 sm:px-4 min-h-[60px] sm:min-h-[72px] py-2 hover:bg-[#f8f9fa] cursor-pointer transition-colors border-b border-[#f0f2f4] last:border-b-0">
                     <div
-                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14 flex-shrink-0"
+                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-12 sm:size-14 flex-shrink-0"
                       style={{backgroundImage: `url("${group.image}")`}}
                     />
-                    <div className="flex flex-col justify-center flex-1">
-                      <p className="text-[#111418] text-base font-medium leading-normal line-clamp-1">{group.name}</p>
-                      <p className="text-[#637488] text-sm font-normal leading-normal line-clamp-2">
+                    <div className="flex flex-col justify-center flex-1 min-w-0">
+                      <p className="text-[#111418] text-sm sm:text-base font-medium leading-normal line-clamp-1">{group.name}</p>
+                      <p className="text-[#637488] text-xs sm:text-sm font-normal leading-normal line-clamp-2">
                         {group.balance >= 0 ? `You are owed $${Math.abs(group.balance)}` : `You owe $${Math.abs(group.balance)}`}
                       </p>
                       <p className="text-[#637488] text-xs font-normal leading-normal line-clamp-1">
